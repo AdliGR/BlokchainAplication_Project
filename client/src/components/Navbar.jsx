@@ -5,39 +5,40 @@ import { AiOutlineClose } from "react-icons/ai";
 import logo from "../../images/logo.png";
 
 const NavBarItem = ({ title, classprops }) => (
-  <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
+  <li className={`mx-2 cursor-pointer ${classprops}`}>{title}</li>
 );
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
 
   return (
-    <nav className="w-full flex md:justify-center justify-between items-center p-4">
-      <div className="md:flex-[0.5] flex-initial justify-center items-center">
-        <img src={logo} alt="logo" className="w-32 cursor-pointer" />
+    <nav className="w-full fixed md:justify-center justify-between items-center p-4">
+      <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#868686] rounded-[100px]">
+        <img src={logo} alt="logo" className="w-30 cursor-pointer" />
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["Market", "Exchange", "Tutorials", "Wallets"].map((item, index) => (
+        {["Toko", "Pertukaran", "Guide", "Tabungan"].map((item, index) => (
           <NavBarItem key={item + index} title={item} />
         ))}
-        <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
-          Login
+        <li className="bg-[#cfcfcf] py-4 px-9 hover:bg-[#ffffff]">
+          Masuk
         </li>
       </ul>
+
       <div className="flex relative">
         {!toggleMenu && (
-          <HiMenuAlt4 fontSize={28} className="text-white md:hidden cursor-pointer" onClick={() => setToggleMenu(true)} />
+          <HiMenuAlt4 fontSize={20} className="text-black md:hidden cursor-pointer" onClick={() => setToggleMenu(true)} />
         )}
         {toggleMenu && (
-          <AiOutlineClose fontSize={28} className="text-white md:hidden cursor-pointer" onClick={() => setToggleMenu(false)} />
+          <AiOutlineClose fontSize={20} className="text-black md:hidden cursor-pointer" onClick={() => setToggleMenu(false)} />
         )}
         {toggleMenu && (
           <ul
-            className="z-10 fixed -top-0 -right-2 p-3 w-[70vw] h-screen shadow-2xl md:hidden list-none
-            flex flex-col justify-start items-end rounded-md blue-glassmorphism text-white animate-slide-in"
+            className="z-10 flex -top-0 -right-2 p-3 w-470vw] md:show list-none
+            flex flex-col bold-start items-end rounded-md text-black animate-slide-in"
           >
-            <li className="text-xl w-full my-2"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
-            {["Market", "Exchange", "Tutorials", "Wallets"].map(
+            <li className="flex flex-col justiy-center items-center gap-3"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
+            {["Toko", "Pertukaran", "Guide", "Tabungan"].map(
               (item, index) => <NavBarItem key={item + index} title={item} classprops="my-2 text-lg" />,
             )}
           </ul>
